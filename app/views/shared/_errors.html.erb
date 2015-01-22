@@ -1,0 +1,10 @@
+<% if the_object.errors.any? %>
+  <div class="alert alert-error">
+    <h5>Please fix the following <%= 'error'.pluralize(the_object.errors.count) %></h5>
+    <ul>
+      <% the_object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

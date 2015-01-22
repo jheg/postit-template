@@ -1,0 +1,15 @@
+<div class="row">  
+  <div class="span8 well">
+    <%= render the_post.categories %>
+    <h4><%= link_to the_post.title, post_path(the_post) %></h4>
+    <a href="<%= url_fixer(the_post.url) %>"><%= the_post.url %></a>
+    <p><%= the_post.description %></p>
+    <p><span class="quiet">posted by</span> <%= the_post.creator.username %> <small><%= time_ago(the_post.created_at) %> ago</small></p>
+    <p>Comments: <%= link_to(the_post.comments.size, post_path(the_post)) %></p>
+    
+    <% if current_user == the_post.creator %>  
+      <p>(<%= link_to 'edit', edit_post_path(the_post) %>)</p>
+    <% end %>
+
+  </div>
+</div>

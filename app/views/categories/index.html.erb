@@ -1,0 +1,16 @@
+<%= render 'shared/content_title', title: "Posts by category" %>
+
+<ul>
+  <% @categories.each do |cat| %>
+    <% cat.posts.each do |post| %>
+      <li><%= post.title %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<ul>
+  <% @categories.each do |catname| %>
+    <li><%= catname.name %></li>
+  <% end %>
+</ul>
+
