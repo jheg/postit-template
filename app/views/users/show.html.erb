@@ -1,0 +1,42 @@
+<%= render 'shared/content_title', title: "Profile: #{@user.username}" %>
+
+
+<div class="well">
+  <dl class="dl-horizontal">
+    <dt>Username:</dt>
+    <dd><%= @user.username %></dd>
+  </dl>
+</div>
+
+<h5><%= @user.username %>'s activity</h5>
+
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="<%= 'active' if params[:tab].nil? %>">
+      <%= link_to "Posts (#{@user.posts.count})", user_path(@user) %>
+    </li>
+    <li class="<%= 'active' if params[:tab] == 'comments' %>">
+      <%= link_to "Comments (#{@user.comments.count})", user_path(@user, tab: 'comments' ) %> 
+    </li>  
+  </ul>
+  <div class="tab-content">  
+    <% if params[:tab].nil? %>
+      <div>
+        <% @user.posts.each do |the_post| %>
+          <%= render 'posts/post', the_post: the_post %>
+        <% end %>
+      </div>
+    <% elsif params[:tab] == 'comments' %>
+      <div>
+          <% @user.comments.each do |the_comment| %>
+            <%= render 'comments/comments', comment: the_comment, show_post_title: true %>
+          <% end %>    
+
+
+      </div>
+    <% end %>  
+  </div>
+</div>
+
+
+

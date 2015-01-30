@@ -1,0 +1,15 @@
+<%= form_for @user do |f| %>
+  <%= render 'shared/errors', the_object: @user %>
+
+  <div class="controll-group">
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+  <div class="controll-group">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="controll-group">
+    <%= f.submit(@user.new_record? ? 'Register' : 'Update Profile', class: 'btn btn-success btn-small')  %>
+  </div>
+<% end %>

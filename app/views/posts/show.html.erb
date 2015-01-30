@@ -25,13 +25,8 @@
     <%= f.submit 'Add comment', class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-
 <% @the_post.comments.each do |comment| %>
-  <div  class="well span8">
-    <p><em><%= comment.body %></em></p>
-    <br />
-    <span class="quiet">Comment by: </span><%= link_to comment.creator.username %>
-    <small>  ago</small>
-  </div>
+  <%= render 'comments/comments', comment: comment %>
 <% end %>
+
 
