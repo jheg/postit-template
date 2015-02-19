@@ -7,15 +7,4 @@ class Comment < ActiveRecord::Base
 
   validates :body, presence: true
 
-  def total_votes
-    up_votes - down_votes
-  end
-
-  def up_votes
-    self.votes.where(vote: true).count
-  end
-
-  def down_votes
-    self.votes.where(vote: false).count
-  end
 end
